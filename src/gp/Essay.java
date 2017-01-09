@@ -179,11 +179,12 @@ public class Essay extends JFrame {
                 	if(mcqseter.main != null){
                 		mcqseter.main.textArea = null;
                 		mcqseter.main.textField = null;
+                		mcqseter.main.textAreaStruct = null;
                 		mcqseter.main.curPos = curPosEssay;
                 		mcqseter.main.textPaneEssay = textPaneEssay;
                 		mcqseter.main.setVisible(true);
                 	}else{
-                		mcqseter.main = new MainWindow(null,null,textPaneEssay,curPosEssay);
+                		mcqseter.main = new MainWindow(null,null,textPaneEssay,null,curPosEssay);
                 		mcqseter.main.setVisible(true);
                 	}
                 	//BufferedReader b=new BufferedReader(FileReader("math.txt"));

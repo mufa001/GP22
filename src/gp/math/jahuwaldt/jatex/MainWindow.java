@@ -142,9 +142,10 @@ public class MainWindow extends JFrame implements MainApp{
     public JTextArea textArea = null;
     public JTextField textField = null;
     public JTextPane textPaneEssay = null;
+    public JTextArea textAreaStruct = null;
     public int curPos;
     
-    public MainWindow(JTextField textField,JTextArea textArea,JTextPane textPaneEssay,int curPos) throws NoSuchMethodException {
+    public MainWindow(JTextField textField,JTextArea textArea,JTextPane textPaneEssay,JTextArea textAreaEssay,int curPos) throws NoSuchMethodException {
     	
     	 
     	
@@ -156,6 +157,7 @@ public class MainWindow extends JFrame implements MainApp{
         this.textField = textField;
         this.textArea = textArea;
         this.textPaneEssay = textPaneEssay;
+        this.textAreaStruct = textAreaStruct;
         this.curPos = curPos;
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         try {
@@ -1267,6 +1269,16 @@ public class MainWindow extends JFrame implements MainApp{
 			textPaneEssay.setText(newS);
 			
 			//System.out.println("text Pane Essay");
+        }
+        else if(this.textAreaStruct != null){
+
+			String val = textAreaStruct.getText();
+			String fir = val.substring(0, curPos);
+			String sec = val.substring(curPos);
+			
+			String newS = fir + input +sec;
+			textAreaStruct.setText(newS);
+			
         }
 			
 			//FileWriter fw= new FileWriter("math.txt");

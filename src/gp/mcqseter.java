@@ -522,7 +522,7 @@ public class mcqseter extends javax.swing.JFrame {
                 		main.curPos = curPos;
                 		main.setVisible(true);
                 	}else{
-                		main = new MainWindow(textField,textArea,null,curPos);
+                		main = new MainWindow(textField,textArea,null,null,curPos);
                 		main.setVisible(true);
                 	}
                 	//BufferedReader b=new BufferedReader(FileReader("math.txt"));

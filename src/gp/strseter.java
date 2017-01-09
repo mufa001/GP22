@@ -6,8 +6,13 @@
 package gp;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeListener;
+
+import gp.math.jahuwaldt.jatex.MainWindow;
+
 import javax.swing.event.ChangeEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 import javax.swing.JButton;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
@@ -15,6 +20,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 /**
  *
  * @author User
@@ -28,6 +37,10 @@ public class strseter extends javax.swing.JFrame {
 	public  String  tst="";
 	public  String  tp ="Above";
 	main1_frame g;
+	
+	public static JTextArea textAreaStruct = null;
+	public static int curPosStruct;
+
 	
     public strseter(main1_frame a) {
         initComponents();
@@ -158,17 +171,58 @@ public class strseter extends javax.swing.JFrame {
             }
         });
         question = new javax.swing.JTextArea();
+        question.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseReleased(MouseEvent arg0) {
+        		curPosStruct=question.getCaretPosition();
+				textAreaStruct=question;
+        	}
+        });
+        question.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyReleased(KeyEvent e) {
+        		curPosStruct=question.getCaretPosition();
+				textAreaStruct=question;
+        	}
+        });
         
                 question.setColumns(20);
                 question.setRows(5);
         
         Pic = new JButton("Picture");
+        
+        JButton btnAddMaths = new JButton("Add Maths");
+        btnAddMaths.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        		try {
+                	
+                	if(mcqseter.main != null){
+                		mcqseter.main.textArea = null;
+                		mcqseter.main.textField = null;
+                		mcqseter.main.textPaneEssay = null;
+                		mcqseter.main.curPos = curPosStruct;
+                		mcqseter.main.textAreaStruct = textAreaStruct;
+                		mcqseter.main.setVisible(true);
+                	}else{
+                		mcqseter.main = new MainWindow(null,null,null,textAreaStruct,curPosStruct);
+                		mcqseter.main.setVisible(true);
+                	}
+                	//BufferedReader b=new BufferedReader(FileReader("math.txt"));
+                	
+                                          
+
+                } catch (Throwable ex) {
+                    ex.printStackTrace();
+                    
+                }
+        	}
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
         				.addGroup(layout.createSequentialGroup()
         					.addContainerGap()
         					.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
@@ -177,6 +231,8 @@ public class strseter extends javax.swing.JFrame {
         							.addPreferredGap(ComponentPlacement.RELATED)
         							.addComponent(space, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
         							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        							.addComponent(btnAddMaths)
+        							.addGap(18)
         							.addComponent(Pic))
         						.addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
         						.addGroup(layout.createSequentialGroup()
@@ -215,7 +271,7 @@ public class strseter extends javax.swing.JFrame {
         						.addGroup(layout.createSequentialGroup()
         							.addPreferredGap(ComponentPlacement.RELATED)
         							.addComponent(changetitle))))
-        				.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        				.addGroup(layout.createSequentialGroup()
         					.addContainerGap(1081, Short.MAX_VALUE)
         					.addComponent(Add, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE))
         				.addGroup(layout.createSequentialGroup()
@@ -263,7 +319,9 @@ public class strseter extends javax.swing.JFrame {
         						.addComponent(Bloom)))
         				.addGroup(layout.createSequentialGroup()
         					.addGap(18)
-        					.addComponent(Pic)))
+        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(Pic)
+        						.addComponent(btnAddMaths))))
         			.addGap(18)
         			.addComponent(jLabel6)
         			.addGap(11)
