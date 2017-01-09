@@ -916,7 +916,7 @@ public class main1_frame extends javax.swing.JFrame {
 public void strupd(){
 	String upd=paper+mcq+str+endmark+end;
 	try{
-		  PrintWriter writer = new PrintWriter("C:\\Users\\user\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex", "UTF-8");
+		  PrintWriter writer = new PrintWriter(System.getProperty("user.home")+"\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex", "UTF-8");
 		  writer.println(upd);
 		  writer.close();
 		  
@@ -926,7 +926,7 @@ public void strupd(){
 		  DefaultListModel listModel = new DefaultListModel();
 		  tex.setText("");
 		  try{
-		  BufferedReader in=new BufferedReader(new FileReader("C:\\Users\\user\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex"));
+		  BufferedReader in=new BufferedReader(new FileReader(System.getProperty("user.home")+"\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex"));
 		  String line=null;
 		  while((line=in.readLine())!=null){
 			  listModel.addElement(line);
@@ -962,7 +962,7 @@ public void mcqupd(){
     	
     	String upd=paper+mcq+endmark+end;
     	try{
-			  PrintWriter writer = new PrintWriter("C:\\Users\\user\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex", "UTF-8");
+			  PrintWriter writer = new PrintWriter(System.getProperty("user.home")+"\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex", "UTF-8");
 			  writer.println(upd);
 			  writer.close();
 			  
@@ -972,7 +972,7 @@ public void mcqupd(){
 			  DefaultListModel listModel = new DefaultListModel();
 			  tex.setText("");
 			  try{
-			  BufferedReader in=new BufferedReader(new FileReader("C:\\Users\\user\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex"));
+			  BufferedReader in=new BufferedReader(new FileReader(System.getProperty("user.home")+"\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex"));
 			  String line=null;
 			  while((line=in.readLine())!=null){
 				  listModel.addElement(line);
@@ -1050,8 +1050,8 @@ public void mcqupd(){
         // TODO add your handling code here:
     	try{//create pdf
 			File desktop = new File(System.getProperty("user.home")	+ "\\" + "Desktop");
-			File wd = new File("C:\\Users\\User\\Desktop\\MyFiles\\java\\fwdtemplates(1)");
-			File invoice1 = new File("C:\\Users\\User\\Desktop\\MyFiles\\java\\fwdtemplates(1)"+"\\"+ "latex.tex");
+			File wd = new File(System.getProperty("user.home")+"\\Desktop\\MyFiles\\java\\fwdtemplates(1)");
+			File invoice1 = new File(System.getProperty("user.home")+"\\Desktop\\MyFiles\\java\\fwdtemplates(1)"+"\\"+ "latex.tex");
 			JLRGenerator pdfGen = new JLRGenerator();
 
 			pdfGen.generate(invoice1, desktop, wd);

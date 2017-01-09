@@ -479,7 +479,7 @@ public class newp1 extends javax.swing.JFrame{
         				 String write=latex+endmark+end;
         					
         				  try{
-        					  PrintWriter writer = new PrintWriter("C:\\Users\\user\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex", "UTF-8");
+        					  PrintWriter writer = new PrintWriter(System.getProperty("user.home")+"\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex", "UTF-8");
         					  writer.println(write);
         					  writer.close();
         					  
@@ -488,7 +488,7 @@ public class newp1 extends javax.swing.JFrame{
         					 // g.setVisible(true);
         					  DefaultListModel listModel = new DefaultListModel();
         					  try{
-        					  BufferedReader in=new BufferedReader(new FileReader("C:\\Users\\user\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex"));
+        					  BufferedReader in=new BufferedReader(new FileReader(System.getProperty("user.home")+"\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex"));
         					  String line=null;
         					  while((line=in.readLine())!=null){
         						  listModel.addElement(line);
