@@ -448,6 +448,7 @@ public class newp1 extends javax.swing.JFrame{
         		
         		String latex="\\documentclass[12pt,onecolumn,a4paper]{article}\r\n"+      
         				"\\usepackage{ucsc-exam}\r\n"+
+        				"\\usepackage{graphicx}\r\n"+
         				"\\usepackage{times}\r\n"+
         				"\\usepackage{enumerate}\r\n"+
         				"\\degree{"+ degree.getSelectedItem()+"}\r\n"+

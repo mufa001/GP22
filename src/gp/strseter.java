@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gp;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeListener;
@@ -10,6 +5,8 @@ import javax.swing.event.ChangeListener;
 import gp.math.jahuwaldt.jatex.MainWindow;
 
 import javax.swing.event.ChangeEvent;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
@@ -17,13 +14,25 @@ import javax.swing.JButton;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JLabel;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Component;
+import java.awt.Font;
+import java.io.File;
+import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+
+import javax.swing.JTabbedPane;
+import javax.swing.JSpinner;
 /**
  *
  * @author User
@@ -40,9 +49,15 @@ public class strseter extends javax.swing.JFrame {
 	
 	public static JTextArea textAreaStruct = null;
 	public static int curPosStruct;
+	
+	public String imgpath="";
+	public String abimgpath="";
 
 	
     public strseter(main1_frame a) {
+    	setResizable(false);
+    	setFont(new Font("Bell Gothic Std Light", Font.PLAIN, 12));
+    	setAlwaysOnTop(true);
         initComponents();
         g=a;
     }
@@ -140,9 +155,9 @@ public class strseter extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText(" Question");
+        jLabel4.setText("Question");
 
-        jLabel5.setText("      Marks");
+        jLabel5.setText("Marks");
 
         Table.setText("Add Table");
         Table.addActionListener(new java.awt.event.ActionListener() {
@@ -190,6 +205,34 @@ public class strseter extends javax.swing.JFrame {
                 question.setRows(5);
         
         Pic = new JButton("Picture");
+        Pic.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		JFileChooser fileChooser=new JFileChooser("C:\\");
+        		FileNameExtensionFilter filter;
+        		filter = new FileNameExtensionFilter("jpeg, gif and png files", "jpg", "gif", "png");
+        		fileChooser.addChoosableFileFilter(filter);
+        		int returnVal = fileChooser.showOpenDialog((Component)e.getSource());
+        	    if (returnVal == JFileChooser.APPROVE_OPTION) {
+        	        File file = fileChooser.getSelectedFile();
+        	        String filename=fileChooser.getSelectedFile().getName();
+        	        abimgpath=filename;
+        	        try {
+        	           imgpath = file.toString();
+        	           
+        	           String dest="C:\\Users\\User\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\+"+filename;
+        	           File f1=new File(imgpath);
+        	           File f2=new File(dest);
+        	           Files.copy(f1.toPath(),f2.toPath(),StandardCopyOption.REPLACE_EXISTING);
+        	           System.out.println(imgpath);
+        	        } catch (Exception ex) {
+        	          System.out.println("problem accessing file"+file.getAbsolutePath());
+        	        }
+        	    } 
+        	    else {
+        	        System.out.println("File access cancelled by user.");
+        	    }
+        	}
+        });
         
         JButton btnAddMaths = new JButton("Add Maths");
         btnAddMaths.addActionListener(new ActionListener() {
@@ -220,115 +263,97 @@ public class strseter extends javax.swing.JFrame {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
+        	layout.createParallelGroup(Alignment.TRAILING)
         		.addGroup(layout.createSequentialGroup()
         			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
         				.addGroup(layout.createSequentialGroup()
         					.addContainerGap()
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
-        						.addGroup(layout.createSequentialGroup()
-        							.addComponent(jLabel7, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(space, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
-        							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        							.addComponent(btnAddMaths)
-        							.addGap(18)
-        							.addComponent(Pic))
-        						.addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
-        						.addGroup(layout.createSequentialGroup()
-        							.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
-        								.addGroup(layout.createSequentialGroup()
-        									.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
-        									.addPreferredGap(ComponentPlacement.RELATED)
-        									.addComponent(Title))
-        								.addComponent(question, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 881, GroupLayout.PREFERRED_SIZE))
-        							.addPreferredGap(ComponentPlacement.RELATED)))
-        					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        						.addGroup(layout.createSequentialGroup()
-        							.addGap(71)
+        					.addComponent(Add, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        					.addGroup(layout.createSequentialGroup()
+        						.addContainerGap()
+        						.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        							.addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
         							.addGroup(layout.createParallelGroup(Alignment.TRAILING)
         								.addGroup(layout.createSequentialGroup()
+        									.addComponent(jLabel7, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
         									.addPreferredGap(ComponentPlacement.RELATED)
-        									.addComponent(Table))
-        								.addGroup(layout.createSequentialGroup()
-        									.addGap(29)
-        									.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        										.addGroup(layout.createSequentialGroup()
-        											.addGap(71)
-        											.addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-        											.addPreferredGap(ComponentPlacement.RELATED)
-        											.addComponent(Marks, GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
-        										.addGroup(layout.createSequentialGroup()
-        											.addComponent(jLabel2)
-        											.addGap(21)
-        											.addComponent(qno, GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
-        										.addGroup(layout.createSequentialGroup()
-        											.addComponent(jLabel3)
-        											.addGap(27)
-        											.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        												.addComponent(Bloom, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-        												.addComponent(sqno, GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)))))))
-        						.addGroup(layout.createSequentialGroup()
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addComponent(changetitle))))
-        				.addGroup(layout.createSequentialGroup()
-        					.addContainerGap(1081, Short.MAX_VALUE)
-        					.addComponent(Add, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(1078)
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(Area, 0, 114, Short.MAX_VALUE))))
-        			.addContainerGap())
+        									.addComponent(space, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+        									.addPreferredGap(ComponentPlacement.RELATED, 615, Short.MAX_VALUE)
+        									.addComponent(btnAddMaths)
+        									.addGap(25)
+        									.addComponent(Pic))
+        								.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+        									.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+        									.addPreferredGap(ComponentPlacement.RELATED)
+        									.addComponent(Title, GroupLayout.PREFERRED_SIZE, 853, GroupLayout.PREFERRED_SIZE))
+        								.addComponent(question, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 915, Short.MAX_VALUE)))
+        						.addGap(32)
+        						.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
+        							.addComponent(jLabel5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        							.addComponent(jLabel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        							.addComponent(jLabel3, Alignment.LEADING))
+        						.addPreferredGap(ComponentPlacement.RELATED)
+        						.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
+        							.addComponent(Bloom, 0, 0, Short.MAX_VALUE)
+        							.addComponent(Table, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        							.addComponent(changetitle, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        							.addComponent(qno, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+        							.addGroup(layout.createSequentialGroup()
+        								.addGap(6)
+        								.addComponent(Area, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE))
+        							.addComponent(sqno)
+        							.addComponent(Marks)))
+        					.addGroup(layout.createSequentialGroup()
+        						.addGap(1078)
+        						.addComponent(jLabel6, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE))))
+        			.addGap(94))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap()
+        			.addGap(35)
         			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(Title, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         				.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
         				.addComponent(jLabel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        				.addComponent(qno, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(qno, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(Title, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         			.addPreferredGap(ComponentPlacement.UNRELATED)
         			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(jLabel4)
         				.addComponent(changetitle))
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jLabel3)
         				.addGroup(layout.createSequentialGroup()
-        					.addGap(24)
+        					.addComponent(sqno, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        					.addPreferredGap(ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
         					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(jLabel3)
-        						.addComponent(sqno, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        					.addGap(31)
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(jLabel5)
-        						.addComponent(Marks, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        					.addGap(33)
+        						.addComponent(Marks, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(jLabel5))
+        					.addGap(29)
         					.addComponent(Table))
-        				.addGroup(layout.createSequentialGroup()
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(question, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)))
+        				.addComponent(question, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE))
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(layout.createSequentialGroup()
         					.addGap(19)
         					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
         						.addComponent(jLabel7)
-        						.addComponent(space, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(Bloom)))
+        						.addComponent(space, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
         				.addGroup(layout.createSequentialGroup()
         					.addGap(18)
         					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(Pic)
-        						.addComponent(btnAddMaths))))
+        						.addComponent(Bloom)
+        						.addComponent(btnAddMaths)
+        						.addComponent(Pic))))
         			.addGap(18)
         			.addComponent(jLabel6)
-        			.addGap(11)
+        			.addPreferredGap(ComponentPlacement.RELATED)
         			.addComponent(Area, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        			.addGap(59)
+        			.addGap(176)
         			.addComponent(Add)
-        			.addGap(123))
+        			.addContainerGap())
         );
         getContentPane().setLayout(layout);
 
@@ -388,10 +413,20 @@ public class strseter extends javax.swing.JFrame {
    		   }
    		}
     	
+   		
+   		String pic="";
+   		if(abimgpath!=null){
+   			pic="\\includegraphics[width=0.5\\textwidth]{"+"+"+abimgpath+"}\r\n";
+   		      
+   		}
+   		
+   		
+   		
    		String stitle="\\newpage\r\n"+"\\question{"+Title.getText()+"\r\n";
+   		
     	String str=
-    		  utable+"\\subquestion{"+ question.getText() +"\r\n" + dtable+ 
-
+    		  utable+"\\subquestion{"+ pic+question.getText() +"\r\n" + dtable+ 
+              
               "\\qmarks{"+Marks.getValue()+"}\r\n"+
 
               "\\answer{"+space.getValue()+"in}\r\n"+
@@ -419,12 +454,15 @@ public class strseter extends javax.swing.JFrame {
     	        r.uquestion=question.getText();
         		r.mark=Marks.getValue().toString();
         		r.btarea=Area.getSelectedItem().toString();
-        		if(!testa.CheckMark()){
+        		/*if(!testa.CheckMark()){
         			JOptionPane.showMessageDialog(null, "Marks for total questions exeeded the Limit");
         			
         		}else{
         		testa.strlist.put(sqn,r);
-        		}
+        		}*/
+        		testa.strlist.put(sqn,r);
+        		pic="";
+        		abimgpath="";
        	       }
     		else{
     			stro t=new stro(no,str);
@@ -434,8 +472,9 @@ public class strseter extends javax.swing.JFrame {
         		t.btarea=Area.getSelectedItem().toString();
         		testa.strlist.put(sqn,t);
     			}
-    		g.stmapper.put(no,testa);
-    		
+    		   g.stmapper.put(no,testa);
+    		   pic="";
+    		   abimgpath="";
     		
     	}else{
     	
@@ -449,6 +488,8 @@ public class strseter extends javax.swing.JFrame {
     		t.btarea=Area.getSelectedItem().toString();
     		r.strlist.put(sqn,t);
     		g.stmapper.put(no,r);
+    		pic="";
+    		abimgpath="";
     	}
     	
     	g.strset();
@@ -515,4 +556,8 @@ public class strseter extends javax.swing.JFrame {
     private javax.swing.JTextArea question;
     private javax.swing.JTextField Title;
     private JButton Pic;
+    /**
+     * @wbp.nonvisual location=425,-31
+     */
+    private final JSpinner spinner = new JSpinner();
 }

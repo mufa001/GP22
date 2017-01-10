@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,6 +25,7 @@ import java.sql.Statement;
 import java.util.HashMap;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -47,6 +49,7 @@ import java.beans.PropertyChangeEvent;
 /**
  *
  * @author ViduraDan
+ * @param <strsetter>
  */
 public class main1_frame extends javax.swing.JFrame {
 
@@ -855,9 +858,9 @@ public class main1_frame extends javax.swing.JFrame {
   private void str_ActionPerformed(java.awt.event.ActionEvent evt){
     	
     	strseter a=new strseter(this);
-        a.setVisible(true);
+    	a.setVisible(true);
     }
-    
+  
     
  
     
