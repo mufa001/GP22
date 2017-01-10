@@ -198,6 +198,14 @@ public class strsetter extends JFrame {
 					.addContainerGap(56, Short.MAX_VALUE))
 		);
 		qno.setModel(new SpinnerNumberModel(1, 1, 20, 1));
+		pic.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		gl_Question.setVerticalGroup(
 			gl_Question.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_Question.createSequentialGroup()

@@ -8,11 +8,15 @@ import javax.swing.SpinnerListModel;
  */
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
+import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -21,9 +25,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.DefaultComboBoxModel;
 
 import gp.math.jahuwaldt.jatex.MainWindow;
+
 import javax.swing.JButton;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -53,7 +60,38 @@ public class mcqseter extends javax.swing.JFrame {
     public static JTextField textField = null;
     public static JTextArea textArea = null;
     
+    public String imgpath="";
+	public String abimgpath="";
+    
     public mcqseter(main1_frame a) {
+    	pic.addActionListener(new ActionListener() {
+    		public void actionPerformed(ActionEvent e) {
+    			JFileChooser fileChooser=new JFileChooser("C:\\");
+        		FileNameExtensionFilter filter;
+        		filter = new FileNameExtensionFilter("jpeg, gif and png files", "jpg", "gif", "png");
+        		fileChooser.addChoosableFileFilter(filter);
+        		int returnVal = fileChooser.showOpenDialog((Component)e.getSource());
+        	    if (returnVal == JFileChooser.APPROVE_OPTION) {
+        	        File file = fileChooser.getSelectedFile();
+        	        String filename=fileChooser.getSelectedFile().getName();
+        	        abimgpath=filename;
+        	        try {
+        	           imgpath = file.toString();
+        	           
+        	           String dest="C:\\Users\\User\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\+"+filename;
+        	           File f1=new File(imgpath);
+        	           File f2=new File(dest);
+        	           Files.copy(f1.toPath(),f2.toPath(),StandardCopyOption.REPLACE_EXISTING);
+        	           System.out.println(imgpath);
+        	        } catch (Exception ex) {
+        	          System.out.println("problem accessing file"+file.getAbsolutePath());
+        	        }
+        	    } 
+        	    else {
+        	        System.out.println("File access cancelled by user.");
+        	    }
+    		}
+    	});
         initComponents();
         g=a;
     }
@@ -252,9 +290,14 @@ public class mcqseter extends javax.swing.JFrame {
        		   }
        		}
 
+       		String pic="";
+       		if(abimgpath!=null){
+       			pic="\\includegraphics[width=0.5\\textwidth]{"+"+"+abimgpath+"}\\break\r\n";
+       		      
+       		}
+            
 
-
-       		String MCQ = utable+"\\subquestion{"+Question.getText()+"\r\n"+dtable+
+       		String MCQ = pic+utable+"\\subquestion{"+Question.getText()+"\r\n"+dtable+
        		"\\begin{enumerate}\r\n"+
        		"\\item "+Op1.getText()+"\r\n"+ 
        		"\\item "+Op2.getText()+"\r\n"+
@@ -291,9 +334,11 @@ public class mcqseter extends javax.swing.JFrame {
        			 
        			//r.btarea=
        		    testa.mcqlist.put(sqn,r);
+       		    pic="";
+  		        abimgpath="";
        			}else{
        				
-       				g.mcc+=1;
+       				 g.mcc+=1;
               		 g.mcm+=mark;
               		 g.tcq+=1;
               		 g.tmc+=mark;
@@ -311,6 +356,8 @@ public class mcqseter extends javax.swing.JFrame {
            			r.mark=mks.getValue().toString();
            			r.btarea=area.getSelectedItem().toString();
            		    testa.mcqlist.put(sqn,r);
+           		    pic="";
+      		        abimgpath="";
        				
        			}
        			g.mapper.put(no,testa);
@@ -337,6 +384,8 @@ public class mcqseter extends javax.swing.JFrame {
        			r.mark=mks.getValue().toString();
        			r.btarea=area.getSelectedItem().toString();
        		    testa.mcqlist.put(sqn,r);
+       		    pic="";
+  		        abimgpath="";
        			g.mapper.put(no,testa);
        		}
        		        		
@@ -582,13 +631,16 @@ public class mcqseter extends javax.swing.JFrame {
         			.addGap(4)
         			.addComponent(Op3, GroupLayout.PREFERRED_SIZE, 442, GroupLayout.PREFERRED_SIZE)
         			.addGap(18)
-        			.addComponent(area, 0, 112, Short.MAX_VALUE)
+        			.addComponent(area, 0, 122, Short.MAX_VALUE)
         			.addContainerGap())
         		.addGroup(groupLayout.createSequentialGroup()
         			.addGap(19)
         			.addComponent(jLabel9, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
         			.addGap(4)
-        			.addComponent(Op4, GroupLayout.PREFERRED_SIZE, 442, GroupLayout.PREFERRED_SIZE))
+        			.addComponent(Op4, GroupLayout.PREFERRED_SIZE, 442, GroupLayout.PREFERRED_SIZE)
+        			.addGap(18)
+        			.addComponent(pic, GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+        			.addContainerGap())
         		.addGroup(groupLayout.createSequentialGroup()
         			.addGap(73)
         			.addComponent(addopf)
@@ -671,7 +723,9 @@ public class mcqseter extends javax.swing.JFrame {
         					.addGap(6)
         					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         						.addComponent(jLabel9)
-        						.addComponent(Op4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+        						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+        							.addComponent(Op4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        							.addComponent(pic))))
         				.addGroup(groupLayout.createSequentialGroup()
         					.addGap(9)
         					.addComponent(lblArea)
@@ -759,4 +813,5 @@ public class mcqseter extends javax.swing.JFrame {
     private JLabel lblArea;
     private JComboBox area;
     private JButton btnAddMath;
+    private final JButton pic = new JButton("Add Picture");
 }

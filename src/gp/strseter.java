@@ -416,7 +416,7 @@ public class strseter extends javax.swing.JFrame {
    		
    		String pic="";
    		if(abimgpath!=null){
-   			pic="\\includegraphics[width=0.5\\textwidth]{"+"+"+abimgpath+"}\r\n";
+   			pic="\\includegraphics[width=0.5\\textwidth]{"+"+"+abimgpath+"}\\break\r\n";
    		      
    		}
    		
