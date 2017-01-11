@@ -1141,7 +1141,7 @@ public void mcqupd(){
     }//GEN-LAST:event_jComboBox4ActionPerformed
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	essetter e=new essetter(this);
+    	Essay1 e=new Essay1(this);
     	e.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
