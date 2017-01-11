@@ -69,17 +69,44 @@ public class pt extends JFrame {
 	 * @wbp.parser.constructor
 	 */
 	public pt(newp1 a) {
-		essmks.setModel(new DefaultComboBoxModel(new String[] {"10", "20", "30", "40", "50"}));
+		essmks.setModel(new DefaultComboBoxModel(new String[] {"0", "10", "20", "30", "40", "50"}));
 		essmks.setToolTipText("10\r\n20\r\n30\r\n40\r\n50");
 		essmks.setEditable(true);
-		essq.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		essq.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int r=Integer.parseInt(essq.getSelectedItem().toString());
+				if(r==0){
+					essmks.setSelectedItem(0);
+				}
+			}
+		});
+		essq.setModel(new DefaultComboBoxModel(new String[] {"0", "1", "2", "3", "4", "5"}));
 		essq.setEditable(true);
+		sq.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int r=Integer.parseInt(sq.getSelectedItem().toString());
+				if(r==0){
+					sm.setSelectedItem(0);
+				}
+				
+				
+			}
+		});
 		sq.setEditable(true);
-		sq.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		sq.setModel(new DefaultComboBoxModel(new String[] {"0", "1", "2", "3", "4", "5"}));
 		sm.setEditable(true);
-		sm.setModel(new DefaultComboBoxModel(new String[] {"10", "20", "30", "40", "50"}));
+		sm.setModel(new DefaultComboBoxModel(new String[] {"0", "10", "20", "30", "40", "50"}));
+		noofq.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int r=Integer.parseInt(noofq.getSelectedItem().toString());
+				if(r==0){
+					marks.setSelectedItem(0);
+				}
+			 
+			}
+		});
 		noofq.setEditable(true);
-		noofq.setModel(new DefaultComboBoxModel(new String[] {"15", "20", "25", "50"}));
+		noofq.setModel(new DefaultComboBoxModel(new String[] {"0", "15", "20", "25", "50"}));
 		
 		initGUI();
 		np=a;
@@ -335,7 +362,9 @@ public class pt extends JFrame {
 				np.g.mcc+=1;
 				mcqbund.mcqlist.put(i,ob);
 			}
+		if(n!=0){
 		np.g.mapper.put(1,mcqbund);
+		}
 		
 		String msq="";
 		String strtitle="Anwer the following Questions";
@@ -404,7 +433,7 @@ public class pt extends JFrame {
 			}	
 				
 		});
-		marks.setModel(new DefaultComboBoxModel(new String[] {"20", "30", "40", "50"}));
+		marks.setModel(new DefaultComboBoxModel(new String[] {"0", "20", "30", "40", "50"}));
 		contentPane.setLayout(gl_contentPane);
 	}
 }

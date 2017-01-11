@@ -114,12 +114,14 @@ public class mcqsetter1 extends javax.swing.JFrame {
 				}
         	}
         });
+        
         Domain.addMouseMotionListener(new MouseMotionAdapter() {
         	@Override
         	public void mouseDragged(MouseEvent arg0) {
         		fillCombox();	
         	}
         });
+        
         jScrollPane2 = new javax.swing.JScrollPane();
         keywords = new javax.swing.JList<>();
         keywords.addMouseListener(new MouseAdapter() {
