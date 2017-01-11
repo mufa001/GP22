@@ -29,7 +29,7 @@ import java.awt.event.ActionListener;
  */
 public class table4 extends javax.swing.JFrame {
 	
-	strseter  x;
+	strsetter2  x;
     private DefaultTableModel model=new DefaultTableModel();
     public TableModel md;
     
@@ -161,11 +161,11 @@ for (int i = 0; i < tm.getRowCount(); i++) {
     }
     
     
-    public table4(strseter t) {
+    public table4(ActionListener actionListener) {
     	lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 13));
     	pos.setModel(new DefaultComboBoxModel(new String[] {"Above", "Below"}));
         initComponents();
-        x=t;
+        x=(strsetter2) actionListener;
     }
 
     /*public table3(ActionListener actionListener) {

@@ -495,11 +495,7 @@ public class strseter extends javax.swing.JFrame {
     	g.strset();
 		g.strupd();
 		tst="";
-    	
-    	
-    	
-       
-    }                                        
+   }                                        
 
     /**
      * @param args the command line arguments
@@ -560,4 +556,8 @@ public class strseter extends javax.swing.JFrame {
      * @wbp.nonvisual location=425,-31
      */
     private final JSpinner spinner = new JSpinner();
+    /**
+     * @wbp.nonvisual location=761,-31
+     */
+    private final JLabel label_1 = new JLabel("New label");
 }

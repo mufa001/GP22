@@ -515,7 +515,8 @@ public class newp1 extends javax.swing.JFrame{
         				  
         				  mcqset();
         				  g.mcqupd();
-        				  g.strupd();
+        				  //g.strupd();
+        				  g.esupd();
         				  dispose();
         		        
         		

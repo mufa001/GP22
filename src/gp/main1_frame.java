@@ -46,6 +46,16 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 
 
+
+import java.util.*;
+import javax.swing.UIManager;
+import com.alee.laf.WebLookAndFeel;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+
 /**
  *
  * @author ViduraDan
@@ -63,6 +73,7 @@ public class main1_frame extends javax.swing.JFrame {
 	public static HashMap<Integer,Object> smapper=new HashMap();
 	public static HashMap<Integer ,Object> stmapper=new HashMap();
 	public static HashMap<Integer,Object>strmapper=new HashMap();
+	public static HashMap<Integer,Object>esmapper=new HashMap();
 	
 	
 	
@@ -73,6 +84,9 @@ public class main1_frame extends javax.swing.JFrame {
 	public Double mcm=0.0;
 	public int sc=0;
 	public Double tms=0.0;
+	
+	public int ec=0;
+	public Double mec=0.0;
 	
 	mcqseter a;
 	
@@ -87,6 +101,7 @@ public class main1_frame extends javax.swing.JFrame {
                            "}\r\n";
 	public static String mcq="";
 	public static String str="";
+	public static String es="";
 	
 	
     public main1_frame() {
@@ -116,9 +131,13 @@ public class main1_frame extends javax.swing.JFrame {
     	mcm=0.0;
     	sc=0;
     	tms=0.0;
+    	ec=0;
+    	mec=0.0;
+    	
     	
     }
-     public  void mcqset() {
+     
+    public  void mcqset() {
 		
 		String x="";
 	   	 for (Object o : this.mapper.values()){
@@ -138,6 +157,15 @@ public class main1_frame extends javax.swing.JFrame {
     	}
     	this.str=x;
      }
+    public void esset(){
+    	String x="";
+    	for (Object o:this.esmapper.values()){
+    		essayclass a=(essayclass)o;
+    		x+=a.get();
+    	}
+    	this.es=x;
+    } 
+     
      
     public void fillquestion(){
     	try{
@@ -857,7 +885,7 @@ public class main1_frame extends javax.swing.JFrame {
     
   private void str_ActionPerformed(java.awt.event.ActionEvent evt){
     	
-    	strseter a=new strseter(this);
+    	strsetter2 a=new strsetter2(this);
     	a.setVisible(true);
     }
   
@@ -917,7 +945,7 @@ public class main1_frame extends javax.swing.JFrame {
     }//GEN-LAST:event_newPaper1ActionPerformed
     
 public void strupd(){
-	String upd=paper+mcq+str+endmark+end;
+	String upd=paper+mcq+str+es+endmark+end;
 	try{
 		  PrintWriter writer = new PrintWriter(System.getProperty("user.home")+"\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex", "UTF-8");
 		  writer.println(upd);
@@ -957,13 +985,48 @@ public void strupd(){
 	
 }	
 	
-	
+public void esupd(){
+	String upd=paper+mcq+str+es+endmark+end;
+	try{
+		  PrintWriter writer = new PrintWriter(System.getProperty("user.home")+"\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex", "UTF-8");
+		  writer.println(upd);
+		  writer.close();
+		  
+		 /* gp a=new gp();
+		  a.frmPrototype.setVisible(true);*/
+		 // g.setVisible(true);
+		  DefaultListModel listModel = new DefaultListModel();
+		  tex.setText("");
+		  try{
+		  BufferedReader in=new BufferedReader(new FileReader(System.getProperty("user.home")+"\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex"));
+		  String line=null;
+		  while((line=in.readLine())!=null){
+			  listModel.addElement(line);
+			  tex.append(line+"\n");
+		  }
+		  //a.tex.setModel(listModel);
+		  //tex.setModel(listModel);
+		  }
+		  catch(Exception e){
+			  e.printStackTrace();
+			  
+		  }
+		  
+		  
+		  
+		  
+	  }catch(Exception e){
+		  e.printStackTrace();
+		 
+		  
+	  } 
+}	
 	
   
     
 public void mcqupd(){
     	
-    	String upd=paper+mcq+endmark+end;
+    	String upd=paper+mcq+str+es+endmark+end;
     	try{
 			  PrintWriter writer = new PrintWriter(System.getProperty("user.home")+"\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex", "UTF-8");
 			  writer.println(upd);
@@ -1078,7 +1141,7 @@ public void mcqupd(){
     }//GEN-LAST:event_jComboBox4ActionPerformed
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	Essay e=new Essay();
+    	essetter e=new essetter(this);
     	e.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -1103,13 +1166,13 @@ public void mcqupd(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(main_frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(main1_frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(main_frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(main1_frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(main_frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(main1_frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(main_frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(main1_frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -1196,8 +1259,8 @@ public void mcqupd(){
     public javax.swing.JTextField tm;
     public javax.swing.JTextField mc;
     public javax.swing.JTextField mm;
-    private javax.swing.JTextField en;
-    private javax.swing.JTextField em;
+    public javax.swing.JTextField en;
+    public javax.swing.JTextField em;
     public  javax.swing.JTextField sn;
     public javax.swing.JTextField sm;
     private javax.swing.JButton newPaper;

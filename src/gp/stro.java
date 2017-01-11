@@ -1,6 +1,6 @@
 package gp;
 
-public class stro {
+public class stro{
 	
 int qno;
 String question;
@@ -12,9 +12,5 @@ stro(int i,String s){
 	qno=i;
 	question=s;
 }
-
-
-	
-	
 
 }

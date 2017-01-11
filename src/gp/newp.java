@@ -31,7 +31,7 @@ import java.awt.Font;
  *
  * @author User
  */
-public class newp extends javax.swing.JFrame {
+public class newp extends javax.swing.JFrame{
 
     /**
      * Creates new form newp

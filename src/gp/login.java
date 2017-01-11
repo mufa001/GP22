@@ -122,7 +122,7 @@ public class login extends JFrame {
 					
 					if(count==1){
 					 
-					    main_frame window = new main_frame();
+					    main1_frame window = new main1_frame();
 						window.setVisible(true);
 						dispose();
 						
