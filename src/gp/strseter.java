@@ -219,7 +219,7 @@ public class strseter extends javax.swing.JFrame {
         	        try {
         	           imgpath = file.toString();
         	           
-        	           String dest="C:\\Users\\User\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\+"+filename;
+        	           String dest=System.getProperty("user.home")+"\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\+"+filename;
         	           File f1=new File(imgpath);
         	           File f2=new File(dest);
         	           Files.copy(f1.toPath(),f2.toPath(),StandardCopyOption.REPLACE_EXISTING);

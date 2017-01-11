@@ -145,7 +145,7 @@ public class MainWindow extends JFrame implements MainApp{
     public JTextArea textAreaStruct = null;
     public int curPos;
     
-    public MainWindow(JTextField textField,JTextArea textArea,JTextPane textPaneEssay,JTextArea textAreaEssay,int curPos) throws NoSuchMethodException {
+    public MainWindow(JTextField textField,JTextArea textArea,JTextPane textPaneEssay,JTextArea textAreaStruct,int curPos) throws NoSuchMethodException {
     	
     	 
     	
@@ -424,8 +424,16 @@ public class MainWindow extends JFrame implements MainApp{
         btn.setToolTipText(resBundle.getString("typesetBtnToolTipText"));
         btn.setEnabled(true);
         //this.getRootPane().setDefaultButton(btn);   //  Make this the default button.
-        bottomBtnPanel.add(Box.createGlue());
+        //bottomBtnPanel.add(Box.createGlue());
         bottomBtnPanel.add(btn);
+        
+        JButton clrbtn = new JButton(resBundle.getString("clrBtnText"));
+        clrbtn.addActionListener(AppUtilities.getActionListenerForMethod(this, "handleClr"));
+        clrbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        clrbtn.setToolTipText(resBundle.getString("clrBtnToolTipText"));
+        clrbtn.setEnabled(true);
+        //bottomBtnPanel.add(Box.createGlue());
+        bottomBtnPanel.add(clrbtn);
 		
 		
 		JButton donebtn = new JButton(resBundle.getString("doneBtnText"));
@@ -434,7 +442,10 @@ public class MainWindow extends JFrame implements MainApp{
         donebtn.setToolTipText(resBundle.getString("doneBtnToolTipText"));
         donebtn.setEnabled(true);
         this.getRootPane().setDefaultButton(donebtn);   //  Make this the default button.
+        //bottomBtnPanel.add(Box.createGlue());
         bottomBtnPanel.add(donebtn);
+        
+        
 
         // Layout this window's content pane.
         Container cp = this.getContentPane();
@@ -1290,6 +1301,10 @@ public class MainWindow extends JFrame implements MainApp{
 		
 		
 			
+	}
+
+	public void handleClr(ActionEvent event) {
+		_latexEditorPane.setText("");
 	}
 
     /**
