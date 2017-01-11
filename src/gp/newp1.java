@@ -523,7 +523,7 @@ public class newp1 extends javax.swing.JFrame{
         		
         	}
 
-			private void setVisible(boolean b) {
+			private void setVisible(boolean b){
 				// TODO Auto-generated method stub
 				
 			}

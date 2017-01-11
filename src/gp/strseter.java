@@ -383,8 +383,8 @@ public class strseter extends javax.swing.JFrame {
     }  
     
     private void TableActionPerformed(java.awt.event.ActionEvent evt){
-      	  table4 a=new table4(this);
-          a.setVisible(true);
+
+
       	
       }
 

@@ -75,6 +75,10 @@ public class mcqsetter1 extends javax.swing.JFrame {
         addMath = new javax.swing.JButton();
         addImage = new javax.swing.JButton();
         addTable = new javax.swing.JButton();
+        addTable.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        	}
+        });
         addQuestion = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();

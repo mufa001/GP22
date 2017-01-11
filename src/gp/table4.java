@@ -58,7 +58,6 @@ public class table4 extends javax.swing.JFrame {
 	   return front;
 	   
    }
-   
    public String  end="\\end{tabular}\r\n"+
                 "\\end{table}\r\n";
    
@@ -162,11 +161,11 @@ for (int i = 0; i < tm.getRowCount(); i++) {
     }
     
     
-    public table4(strseter strseter) {
+    public table4(strsetter2 t) {
     	lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 13));
     	pos.setModel(new DefaultComboBoxModel(new String[] {"Above", "Below"}));
         initComponents();
-        //x=(strsetter2) strseter;
+        x=t;
     }
 
     /*public table3(ActionListener actionListener) {
