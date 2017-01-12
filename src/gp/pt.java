@@ -391,7 +391,7 @@ public class pt extends JFrame {
 		testa.mcq+=mlq;
 	    np.g.mapper.put(1,testa);*/
 	    
-	    String ess="";
+	   /* String ess="";
 	    for(int i=1;i<=ec;i++){
 	    	ess+=essy;
 			essayclass t=new essayclass(i);
@@ -402,9 +402,9 @@ public class pt extends JFrame {
 		    t1.mark=mkss;
 		    t.essaylist.put(1,t1);
 			np.g.esmapper.put(i,t);
-	    }
+	    }*/
 	    
-	    np.g.es=ess;
+	    //np.g.es=ess;
 	    
 	    //test
 	     //System.out.println(n);

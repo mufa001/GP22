@@ -157,14 +157,14 @@ public class main1_frame extends javax.swing.JFrame {
     	}
     	this.str=x;
      }
-    public void esset(){
+    /*public void esset(){
     	String x="";
     	for (Object o:this.esmapper.values()){
     		essayclass a=(essayclass)o;
     		x+=a.get();
     	}
     	this.es=x;
-    } 
+    } */
      
      
     public void fillquestion(){
@@ -1141,8 +1141,8 @@ public void mcqupd(){
     }//GEN-LAST:event_jComboBox4ActionPerformed
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    	Essay1 e=new Essay1(this);
-    	e.setVisible(true);
+    	/*Essay1 e=new Essay1(this);
+    	e.setVisible(true);/*/
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

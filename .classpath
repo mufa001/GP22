@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="lib/MRJAdapter.jar"/>
 	<classpathentry kind="lib" path="lib/weblaf-demo-1.29.jar"/>
 	<classpathentry kind="lib" path="lib/weblaf-complete-1.29-1.jar"/>
+	<classpathentry kind="lib" path="lib/jortho.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -28,6 +28,9 @@ import gp.math.jahuwaldt.jatex.MainWindow;
 
 import javax.swing.JButton;
 
+import com.inet.jortho.FileUserDictionary;
+import com.inet.jortho.SpellChecker;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -62,6 +65,23 @@ public class mcqseter extends javax.swing.JFrame {
     
     public String imgpath="";
 	public String abimgpath="";
+	
+	private void spellChecker(){
+		  String userDicPath="dic/";
+		  SpellChecker.setUserDictionaryProvider(new FileUserDictionary(userDicPath));
+		  SpellChecker.registerDictionaries(getClass().getResource(userDicPath), "en");
+		  SpellChecker.register(Op1);
+		  SpellChecker.register(Op2);
+		  SpellChecker.register(Op3);
+		  SpellChecker.register(Op4);
+		  SpellChecker.register(Question);
+		  SpellChecker.register(Title);
+		  
+		  
+	  }
+	
+	
+	
     
     public mcqseter(main1_frame a) {
     	pic.addActionListener(new ActionListener() {
@@ -93,6 +113,7 @@ public class mcqseter extends javax.swing.JFrame {
     		}
     	});
         initComponents();
+        spellChecker();
         g=a;
     }
     
