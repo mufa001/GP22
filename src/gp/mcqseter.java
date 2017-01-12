@@ -67,7 +67,7 @@ public class mcqseter extends javax.swing.JFrame {
 	public String abimgpath="";
 	
 	private void spellChecker(){
-		  String userDicPath="dic/";
+		  String userDicPath="/dic/";
 		  SpellChecker.setUserDictionaryProvider(new FileUserDictionary(userDicPath));
 		  SpellChecker.registerDictionaries(getClass().getResource(userDicPath), "en");
 		  SpellChecker.register(Op1);

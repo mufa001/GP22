@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -219,20 +220,33 @@ public class pt extends JFrame {
 		    String  esmks=essmks.getSelectedItem().toString();
 		    
 		    
-			 
-		     int n=Integer.parseInt(noq);
-		     np.g.mcc=n;//setting  total marks
-		     float m=Float.parseFloat(mrk);
-		     np.g.mcm+=m;//setting mcq marks
-		     int ns=Integer.parseInt(nsq);
-		     float strques=Float.parseFloat(nsq);
-		     np.g.sc+=ns;//setting  structure marks
+		    int n=Integer.parseInt(noq);//total number of mcq question 
+		    float m=Float.parseFloat(mrk);//total marks for mcq question
+		    int ns=Integer.parseInt(nsq); //total number of structured question
+		    float strques=Float.parseFloat(nsq);//total marks for structure question
+		    int ms=Integer.parseInt(smrk);
+		    float mss=Float.parseFloat(smrk);//total marks for structure question
+		    int ec=Integer.parseInt(nesq);//total number of essay questions
+		    float m1=Float.parseFloat(esmks);//total marks for essay question 
+		    
+		    if(m+ms+m1>100){
+		    	JOptionPane.showMessageDialog(null, "Marks for total questions exeeded the Limit");
+		    }
+		    else{
+		    
 		     
-		     int ms=Integer.parseInt(smrk);
-		     float mss=Float.parseFloat(smrk);
-		     np.g.tms+=mss; 
-		     np.g.tcq+=ns+n;
-		     np.g.tmc+=m+mss;
+		    np.g.mcc=n;//setting  total number of mcq quesion in main_frame
+            np.g.mcm+=m;//setting mcq marks
+            np.g.sc+=ns;//setting number of structure questions
+            np.g.tms+=mss;//setting total marks for structure
+            np.g.tcq+=ns+n;//setting  total question
+		    np.g.tmc+=m+mss;//setting total marks 
+		    np.g.ec=ec;//setting total count of essay questions
+		    np.g.mec+=m1;//setting total marks for essay
+		    np.g.tcq+=ec;//setting  total questions
+		    np.g.tmc+=m1;//setting  total marks
+		      
+		     
 		     float mks1=mss/strques; //getting  marks per questions
 		     //int sfmark=Math.round(mks); //rounded marks per questions 
 		     //String mkss=Float.toString(sfmark);
@@ -246,13 +260,12 @@ public class pt extends JFrame {
 			 
 		     String mkk=Integer.toString(mk1);
 		     
-		     int ec=Integer.parseInt(nesq);
-		     np.g.ec=ec;
-		     float m1=Float.parseFloat(esmks);
-		     np.g.mec+=m1;
 		     
-		     np.g.tcq+=ec;
-		     np.g.tmc+=m1;
+		     
+		     
+		    
+		     
+		    
 		     
 		     
   /*  String Str="\\newpage\r\n"+"\\question{ \r\n"+
@@ -297,6 +310,7 @@ public class pt extends JFrame {
 "\\end{subqlist}\r\n";*/
 		     
   String str="\\newpage\r\n"+"\\question{Answer for following question \r\n"+
+             "\\qmarks{"+mkss+"}\r\n"+
 
               "\\begin{subqlist}\r\n"+
 
@@ -374,6 +388,7 @@ public class pt extends JFrame {
 			strclass t=new strclass(i);
 		    t.mark=mks1;
 			t.title="\\question {"+strtitle+".\r\n";
+			t.tmark=Double.parseDouble(mkss);
 		    t.utitle=strtitle;
 		    stro t1=new stro(1,strsubq);
 		    t1.mark=mkss;
@@ -430,7 +445,8 @@ public class pt extends JFrame {
 				 np.g.sn.setText(nsq);*/
 				 dispose();
 				 
-			}	
+			}
+			}
 				
 		});
 		marks.setModel(new DefaultComboBoxModel(new String[] {"0", "20", "30", "40", "50"}));

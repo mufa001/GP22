@@ -20,6 +20,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
+import javax.swing.JSpinner;
+import javax.swing.JLabel;
 
 
 
@@ -42,6 +44,26 @@ public class strsetter2 extends javax.swing.JFrame {
 	public String imgpath="";
 	public String abimgpath="";
     public strsetter2(main1_frame a) {
+    	changetot.addActionListener(new ActionListener() {
+    		public void actionPerformed(ActionEvent arg0) {
+    			int no=(int) qno.getValue();
+     	   	   if(g.stmapper.containsKey(no)){
+     	  	    	strclass o=(strclass)g.stmapper.get(no);
+     	  	    	Double oldmark=o.tmark;
+     	  	    	o.tmark=(Double)totalmrk.getValue();
+     	  	    	System.out.print(o.tmark);
+     	  	    
+     	  	        g.tms=g.tms-oldmark+o.tmark;//changing total marks of structure
+     	  	        g.tmc=g.tmc-oldmark+o.tmark;//changing total marks of whole paper
+     	  	        g.tm.setText(String.valueOf(g.tmc));
+     	  	        g.sm.setText(String.valueOf(g.tms));
+     	  	        
+     	  	        
+     	  	   }
+     	   	   
+    		}
+    	});
+    	totalmrk.setModel(new SpinnerNumberModel(0.0, 0.0, 30.0, 1.0));
     	addtab.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent e) {
     		}
@@ -146,6 +168,7 @@ public class strsetter2 extends javax.swing.JFrame {
             	        question.setText(st1.question);
             	        Double marks=Double.parseDouble(st1.mark);
             	        Mark.setValue(marks);
+            	        totalmrk.setValue(o.tmark);
             	       
             	       
             	  }else{
@@ -224,14 +247,16 @@ public class strsetter2 extends javax.swing.JFrame {
            	
           		
           		String pic="";
-          		if(abimgpath!=null){
+          		if(abimgpath!=""){
           			pic="\\includegraphics[width=0.5\\textwidth]{"+"+"+abimgpath+"}\\break\r\n";
           		      
+          		}else{
+          			pic="";
           		}
+          		System.out.print(pic);
           		
           		
-          		
-          		String stitle="\\newpage\r\n"+"\\question{"+Title.getText()+"\r\n";
+          		String stitle="\\question{"+Title.getText()+"\r\n";
           		
            	String str=
            		  utable+"\\subquestion{"+ pic+question.getText() +"\r\n" + dtable+ 
@@ -348,74 +373,85 @@ public class strsetter2 extends javax.swing.JFrame {
         jLabel7.setText("Marks");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pic, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(7, 7, 7)
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(space, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(153, 153, 153)
-                                    .addComponent(addmath))))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5)))
-                .addGap(116, 116, 116)
-                .addComponent(jLabel4)
-                .addGap(0, 0, Short.MAX_VALUE))
+        	jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(jPanel1Layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.TRAILING)
+        				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 452, GroupLayout.PREFERRED_SIZE)
+        					.addGap(18)
+        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING, false)
+        						.addComponent(jLabel6, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+        						.addComponent(jLabel7, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING, false)
+        						.addGroup(jPanel1Layout.createSequentialGroup()
+        							.addComponent(jLabel2)
+        							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        							.addComponent(changetot)
+        							.addPreferredGap(ComponentPlacement.UNRELATED)
+        							.addComponent(tmrk)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(totalmrk, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE))
+        						.addGroup(jPanel1Layout.createSequentialGroup()
+        							.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(Title, GroupLayout.PREFERRED_SIZE, 418, GroupLayout.PREFERRED_SIZE))
+        						.addGroup(jPanel1Layout.createSequentialGroup()
+        							.addComponent(jLabel3)
+        							.addPreferredGap(ComponentPlacement.UNRELATED)
+        							.addComponent(space, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+        							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        							.addComponent(addmath)
+        							.addPreferredGap(ComponentPlacement.UNRELATED)
+        							.addComponent(pic, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)))
+        					.addGap(18)
+        					.addComponent(jLabel5)))
+        			.addGap(116)
+        			.addComponent(jLabel4)
+        			.addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Title)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel6)
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel7)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(space, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(addmath)
-                    .addComponent(pic))
-                .addContainerGap(119, Short.MAX_VALUE))
+        	jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(jPanel1Layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING, false)
+        				.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+        				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addGap(2)
+        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(Title, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(jLabel4)
+        						.addComponent(jLabel5))))
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addGap(18)
+        					.addComponent(jLabel2))
+        				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(totalmrk, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(tmrk)
+        						.addComponent(changetot))))
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(jPanel1Layout.createSequentialGroup()
+        					.addGap(20)
+        					.addComponent(jLabel6)
+        					.addGap(38)
+        					.addComponent(jLabel7)))
+        			.addGap(37)
+        			.addGroup(jPanel1Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jLabel3)
+        				.addComponent(space, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(pic)
+        				.addComponent(addmath))
+        			.addContainerGap(109, Short.MAX_VALUE))
         );
+        jPanel1.setLayout(jPanel1Layout);
 
         ctitle.setText("Change Title");
 
@@ -546,5 +582,8 @@ public class strsetter2 extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton addmath;
     private final JButton addtab = new JButton("AddTable");
+    private final JSpinner totalmrk = new JSpinner();
+    private final JLabel tmrk = new JLabel("Total Marks");
+    private final JButton changetot = new JButton("change total");
 }
 

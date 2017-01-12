@@ -8,8 +8,11 @@ public class strclass {
     public HashMap<Integer,Object> strlist=new HashMap();
     public String start="\\begin{subqlist}\r\n";
     public String end="\\end{subqlist}\r\n";
+    public Double tmark=0.0;
+   
     public String utitle="";
     float mark;
+    
     
     
     strclass(int x){
@@ -17,7 +20,7 @@ public class strclass {
     }
     
     public  String get(){
-		  return  title+start+this.getq()+end;
+		  return  title+"\\qmarks{"+this.tmark+"}\r\n"+start+this.getq()+end;
 		}
     public String getq(){
     	String s="";

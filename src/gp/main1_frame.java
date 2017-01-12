@@ -996,6 +996,9 @@ public void esupd(){
 		  a.frmPrototype.setVisible(true);*/
 		 // g.setVisible(true);
 		  DefaultListModel listModel = new DefaultListModel();
+		  
+		  
+		  
 		  tex.setText("");
 		  try{
 		  BufferedReader in=new BufferedReader(new FileReader(System.getProperty("user.home")+"\\Desktop\\MyFiles\\java\\fwdtemplates(1)\\latex.tex"));

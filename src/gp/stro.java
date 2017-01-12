@@ -6,6 +6,7 @@ int qno;
 String question;
 String uquestion;
 String mark;
+
 String btarea="Understanding";
 
 stro(int i,String s){
