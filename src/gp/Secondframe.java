@@ -48,7 +48,7 @@ import java.beans.PropertyChangeEvent;
  *
  * @author ViduraDan
  */
-public class main_frame extends javax.swing.JFrame{
+public class Secondframe extends javax.swing.JFrame{
 
     /**
      * Creates new form main_frame
