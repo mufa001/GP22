@@ -15,12 +15,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
  *
  * @author ViduraDan
  */
-public class main extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame {
 
     /**
      * Creates new form main_frame
      */
-    public main() {
+    public Main() {
         initComponents();
 
     }
