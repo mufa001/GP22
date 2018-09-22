@@ -38,7 +38,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.ImageIcon;
 
-public class home extends javax.swing.JFrame {
+public class Home extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
