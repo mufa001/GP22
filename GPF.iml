@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <libelement value="file://C:/Users/User/Desktop/MyFiles/java/jlr/jlr/jlr.jar" />
+    <libelement value="file://C:/Users/User/Desktop/MyFiles/java/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-bin.jar" />
+    <libelement value="jar://$MODULE_DIR$/lib/jlr.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/jazzy0-2-1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/MRJAdapter.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/weblaf-demo-1.29.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/weblaf-complete-1.29-1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/jortho.jar!/" />
+    <src_description expected_position="0">
+      <src_folder value="file://$MODULE_DIR$/src" expected_position="0" />
+    </src_description>
+  </component>
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/bin" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="jdk" jdkName="JavaSE-1.8" jdkType="JavaSDK" />
+    <orderEntry type="module-library">
+      <library name="jlr.jar">
+        <CLASSES>
+          <root url="file://C:/Users/User/Desktop/MyFiles/java/jlr/jlr/jlr.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="mysql-connector-java-5.1.39-bin.jar">
+        <CLASSES>
+          <root url="file://C:/Users/User/Desktop/MyFiles/java/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-bin.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="lib/jlr.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jlr.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jazzy0-2-1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jazzy0-2-1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="MRJAdapter.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/MRJAdapter.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="weblaf-demo-1.29.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/weblaf-demo-1.29.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="weblaf-complete-1.29-1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/weblaf-complete-1.29-1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jortho.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jortho.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>
