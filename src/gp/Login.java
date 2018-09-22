@@ -57,7 +57,7 @@ public class Login extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public login() {
+	public Login() {
 		initGUI();
 	}
 	private void initGUI() {
