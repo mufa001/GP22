@@ -26,7 +26,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 
-public class login extends JFrame {
+public class Login extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField userid;
