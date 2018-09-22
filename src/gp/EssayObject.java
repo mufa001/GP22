@@ -1,6 +1,6 @@
 package gp;
 
-public class esso{
+public class EssayObject{
 	
 int qno;
 String question;
