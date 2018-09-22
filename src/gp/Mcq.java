@@ -17,7 +17,7 @@ import javax.swing.JButton;
  *
  * @author User
  */
-public class mcq extends javax.swing.JFrame {
+public class Mcq extends javax.swing.JFrame {
 	
     public String tst;
     /**
