@@ -1,6 +1,6 @@
 package gp;
 import java.util.HashMap;
-public class mcqbundel {
+public class McqBundle {
 	
 	public HashMap<Integer,Object> mcqlist=new HashMap();
 	
