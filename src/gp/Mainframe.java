@@ -61,7 +61,7 @@ import java.util.logging.Logger;
  * @author ViduraDan
  * @param <strsetter>
  */
-public class main1_frame extends javax.swing.JFrame {
+public class Mainframe extends javax.swing.JFrame {
 
     /**
      * Creates new form main_frame
