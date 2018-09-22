@@ -1,3 +1,1 @@
-# GP22
-# GP22
-# GP22
+This is latex enabled question paper setting system
